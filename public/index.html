@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocketIO</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#0f172a]">
+    <div class="container mx-auto p-2 py-6 lg:px-12 md:px-8 sm:px-4 h-screen transition-all ease-in">
+        <h1 class="font-bold text-7xl text-center text-white mb-16">Cliente Socket</h1>
+
+        <div id="status" class="grid place-content-center content-between">
+            <div class="block py-5 px-8 bg-[#1d2b4e] shadow-xl rounded-md">
+                <p class="text-white">
+                    Server Status:
+                    <span id="serverOnline" class="text-green-500">🟢 Online</span>
+                    <span id="serverOffline" class="text-red-500">🔴 Offline</span>
+                </p>
+                <div class="flex flex-col mt-2 h-[600px]">
+                    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="inline-block w-full py-2 overflow-hidden sm:px-6 lg:px-8">
+                            <div class="overflow-hidden sm:rounded-lg">
+                                <table class="min-w-full overflow-y-hidden">
+                                    <thead class="bg-gray-50 dark:bg-gray-700">
+                                        <tr>
+                                            <th class="py-3 px-6 text-xs font-medium text-left text-gray-700
+                                             uppercase tracking-wider dark:text-gray-400">Cliente</th>
+                                            <th class="py-3 px-6 text-xs font-medium text-left text-gray-700
+                                             uppercase tracking-wider dark:text-gray-400">Fecha</th>
+                                            <th class="py-3 px-6 text-xs font-medium text-left text-gray-700
+                                             uppercase tracking-wider dark:text-gray-400">Hora</th>
+                                            <th class="py-3 px-6 text-xs font-medium text-left text-gray-700
+                                            uppercase tracking-wider dark:text-gray-400">Mensaje</th>
+                                            <th class="py-3 px-6">
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="registros" class="transition-all ease-in">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <form onsubmit="sendMessage(); return false;" class="">
+                        <input id="txtMensaje" class="px-4 py-2 w-[510px] bg-white border border-slate-300 
+                                    rounded-full text-sm shadow-sm placeholder-slate-400 focus:outline-none 
+                                    focus:border-sky-500 text-slate-600" placeholder="Mensaje" autocomplete="off"
+                            type="text">
+                        <button id="btnEnviar" class="px-4 py-2 w-20 ml-1 bg-white border border-slate-300 hover:border-sky-500 
+                                    rounded-full text-sm shadow-sm transition-all focus:outline-none 
+                                    text-slate-700 dark:text-slate-700">
+                            Enviar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/clientSocket.js"></script>
+</body>
+
+</html>
